@@ -1,4 +1,7 @@
+# Files we build
 /node_modules
-/src/playground
 /public/dist
+
+# Sensitive files
 .env*
+docker-compose-private.yml

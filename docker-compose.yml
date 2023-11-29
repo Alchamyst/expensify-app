@@ -1,0 +1,31 @@
+version: '3.8'
+services:
+
+  node-server:
+    container_name: backend-server
+    restart: always
+    build: 
+      context: .
+      dockerfile: ./docker/backend-server/Dockerfile
+      args:
+            - NODE_ENV=production
+            - FIREBASE_API_KEY=some-value-here
+            - FIREBASE_AUTH_DOMAIN=something.firebaseapp.com
+            - FIREBASE_DATABASE_URL=https://something.firebaseio.com
+            - FIREBASE_PROJECT_ID=some-project-id-here
+            - FIREBASE_STORAGE_BUCKET=some-project.appspot.com
+            - FIREBASE_MESSAGING_SENDER_ID=add-value-here
+            - FIREBASE_APP_ID=some-value-here
+    ports:
+      - "3000:3000"
+    environment:
+      - NODE_ENV=production
+
+  nginx-proxy:
+    container_name: expensify-proxy
+    restart: always
+    build: 
+      context: .
+      dockerfile: ./docker/proxy/Dockerfile
+    ports:
+      - "8080:8080"
