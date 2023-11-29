@@ -1,0 +1,22 @@
+version: '3.8'
+services:
+
+  frontend:
+    container_name: expensify-app
+    restart: always
+    build: 
+      context: .
+      dockerfile: ./Dockerfile
+    ports:
+      - "3000:3000"
+    environment:
+      - NODE_ENV=production
+      # - FIREBASE_API_KEY=####################
+      # - FIREBASE_AUTH_DOMAIN=###############.firebaseapp.com
+      # - FIREBASE_DATABASE_URL=https://###############.firebaseio.com
+      # - FIREBASE_PROJECT_ID=###############
+      # - FIREBASE_STORAGE_BUCKET=###############
+      # - FIREBASE_MESSAGING_SENDER_ID=###############
+      # - FIREBASE_APP_ID=###############
+    env_file:
+      - .env.development # Used instead of environment variables above as this compose.yml is being comitted to repo.
