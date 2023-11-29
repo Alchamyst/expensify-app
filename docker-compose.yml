@@ -7,16 +7,16 @@ services:
     build: 
       context: .
       dockerfile: ./Dockerfile
+      args:
+            - NODE_ENV=production
+            - FIREBASE_API_KEY=some-value-here
+            - FIREBASE_AUTH_DOMAIN=something.firebaseapp.com
+            - FIREBASE_DATABASE_URL=https://something.firebaseio.com
+            - FIREBASE_PROJECT_ID=some-project-id-here
+            - FIREBASE_STORAGE_BUCKET=some-project.appspot.com
+            - FIREBASE_MESSAGING_SENDER_ID=add-value-here
+            - FIREBASE_APP_ID=some-value-here
     ports:
       - "3000:3000"
     environment:
       - NODE_ENV=production
-      # - FIREBASE_API_KEY=####################
-      # - FIREBASE_AUTH_DOMAIN=###############.firebaseapp.com
-      # - FIREBASE_DATABASE_URL=https://###############.firebaseio.com
-      # - FIREBASE_PROJECT_ID=###############
-      # - FIREBASE_STORAGE_BUCKET=###############
-      # - FIREBASE_MESSAGING_SENDER_ID=###############
-      # - FIREBASE_APP_ID=###############
-    env_file:
-      - .env.development # Used instead of environment variables above as this compose.yml is being comitted to repo.
