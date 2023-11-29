@@ -1,12 +1,12 @@
 version: '3.8'
 services:
 
-  frontend:
-    container_name: expensify-app
+  node-server:
+    container_name: backend-server
     restart: always
     build: 
       context: .
-      dockerfile: ./Dockerfile
+      dockerfile: ./docker/backend-server/Dockerfile
       args:
             - NODE_ENV=production
             - FIREBASE_API_KEY=some-value-here
@@ -20,3 +20,12 @@ services:
       - "3000:3000"
     environment:
       - NODE_ENV=production
+
+  nginx-proxy:
+    container_name: expensify-proxy
+    restart: always
+    build: 
+      context: .
+      dockerfile: ./docker/proxy/Dockerfile
+    ports:
+      - "8080:8080"

@@ -4,3 +4,4 @@
 
 # Sensitive files
 .env*
+docker-compose-private.yml
