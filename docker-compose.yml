@@ -1,12 +1,12 @@
 version: '3.8'
 services:
 
-  node-server:
+  backend:
     container_name: backend-server
     restart: always
     build: 
       context: .
-      dockerfile: ./docker/backend-server/Dockerfile
+      dockerfile: ./docker/backend/Dockerfile
       args:
             - NODE_ENV=production
             - FIREBASE_API_KEY=some-value-here
