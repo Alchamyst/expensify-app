@@ -2,7 +2,7 @@ version: '3.8'
 services:
 
   backend:
-    container_name: backend-server
+    container_name: expensify-backend
     restart: always
     build: 
       context: .
@@ -16,8 +16,6 @@ services:
             - FIREBASE_STORAGE_BUCKET=some-project.appspot.com
             - FIREBASE_MESSAGING_SENDER_ID=add-value-here
             - FIREBASE_APP_ID=some-value-here
-    ports:
-      - "3000:3000"
     environment:
       - NODE_ENV=production
 
